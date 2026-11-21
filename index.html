@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f5c4d">
+<title>صور جهات الاتصال</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="جهات الاتصال">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--pri:#0f5c4d;--pri2:#16806b;--bg:#f3f6f5;--card:#fff;--txt:#1d2a27;--mut:#6b7b77;--line:#e1e8e6;--fam:#d9822b;--acq:#2b6fd9;--fr:#8a3fd1;--wk:#5b6b2f;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Tajawal',Tahoma,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;padding-bottom:90px}
+header{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;padding:18px 16px 70px;position:relative}
+header h1{font-size:22px;font-weight:800}
+header p{font-size:13px;opacity:.85;margin-top:4px}
+.hbtns{position:absolute;top:16px;left:14px;display:flex;gap:8px}
+.hbtn{background:rgba(255,255,255,.18);border:0;color:#fff;width:40px;height:40px;border-radius:12px;font-size:18px;cursor:pointer}
+.wrap{position:relative;z-index:1;max-width:900px;margin:-52px auto 0;padding:0 14px}
+.search{background:var(--card);border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.08);padding:10px;display:flex;align-items:center;gap:8px}
+.search input{flex:1;border:0;outline:0;font:inherit;font-size:16px;padding:8px;background:transparent}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:14px 0 6px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);padding:8px 14px;border-radius:20px;font:inherit;font-size:14px;cursor:pointer;color:var(--txt)}
+.chip.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.chip b{font-weight:700;opacity:.7;margin-right:4px}
+.stats{font-size:13px;color:var(--mut);margin:6px 2px 10px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}}
+.card{background:var(--card);border-radius:18px;padding:8px 8px 12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05);cursor:pointer;position:relative;transition:transform .15s}
+.card:active{transform:scale(.97)}
+.av{width:96px;height:96px;border-radius:50%;margin:0 auto 10px;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:#fff;border:3px solid #fff;box-shadow:0 0 0 3px var(--c,#ccc)}
+.av.sq{width:100%;height:auto;aspect-ratio:1/1;border-radius:16px;margin:0 0 8px;font-size:64px;border:5px solid var(--c);box-shadow:none}
+.card .nm{font-weight:800;font-size:20px;line-height:1.3;word-break:break-word}
+.card .rl{font-size:16px;color:var(--mut);margin-top:2px}
+.card .tag{display:none}
+.card .fav{font-size:26px;top:14px;right:16px;text-shadow:0 0 4px #000}
+.card .fav{position:absolute;top:8px;right:10px;color:#f2b705;font-size:18px}
+.tag{display:inline-block;font-size:11px;padding:2px 9px;border-radius:10px;color:#fff;margin-top:6px;background:var(--c)}
+.empty{text-align:center;color:var(--mut);padding:50px 20px}
+.empty .big{font-size:56px;margin-bottom:10px}
+.fab{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--pri);color:#fff;border:0;border-radius:30px;padding:16px 30px;white-space:nowrap;font:inherit;font-size:19px;font-weight:700;box-shadow:0 8px 24px rgba(15,92,77,.4);cursor:pointer;z-index:5}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-end;justify-content:center;z-index:20}
+.ov.show{display:flex}
+.sheet{background:var(--card);width:100%;max-width:560px;max-height:92vh;overflow-y:auto;border-radius:22px 22px 0 0;padding:20px 18px 26px;animation:up .22s ease}
+@media(min-width:700px){.ov{align-items:center}.sheet{border-radius:22px}}
+@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.sheet h2{font-size:19px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.x{background:var(--bg);border:0;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer}
+.ph{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:14px}
+.ph .av{width:120px;height:120px;font-size:42px;cursor:pointer}
+.ph small{color:var(--pri);font-weight:700;cursor:pointer}
+label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px;font-weight:500}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 12px;font:inherit;font-size:16px;background:#fafcfb;outline:0}
+input:focus,select:focus,textarea:focus{border-color:var(--pri2)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:15px}
+.chk input{width:20px;height:20px}
+.btns{display:flex;gap:10px;margin-top:18px}
+.b{flex:1;border:0;border-radius:14px;padding:13px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.b.p{background:var(--pri);color:#fff}
+.b.s{background:var(--bg);color:var(--txt)}
+.b.r{background:#fdecea;color:var(--red)}
+.b.g{background:#25d366;color:#fff}
+.b.c{background:#e7f1ff;color:var(--acq)}
+.det{text-align:center}
+.det .av{width:100%;max-width:440px;height:auto;aspect-ratio:1/1;border-radius:22px;font-size:110px;margin:0 auto 12px;cursor:zoom-in;border:6px solid var(--c);box-shadow:none}
+.det h3{font-size:28px!important}
+.bigcall{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.bigcall a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:22px;padding:20px 8px;font-size:24px;font-weight:800;color:#fff;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.bigcall a i{font-style:normal;font-size:54px;line-height:1}
+.bigcall .call{background:#1f6fd1}
+.bigcall .wa{background:#1da851}
+.small .b{font-size:13px;padding:10px;font-weight:500}
+.det h3{font-size:22px}
+.det .rl{color:var(--mut);margin-top:4px}
+.info{text-align:right;background:var(--bg);border-radius:14px;padding:4px 14px;margin-top:16px}
+.info div{padding:10px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;font-size:15px}
+.info div:last-child{border:0}
+.info span{color:var(--mut)}
+.info b{direction:ltr;unicode-bidi:plaintext;font-weight:500}
+.zoom{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:40}
+.zoom.show{display:flex}
+.zoom img{max-width:94vw;max-height:88vh;border-radius:10px}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:10px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.3s;pointer-events:none;z-index:50}
+.toast.show{opacity:1}
+.menu .b{margin-top:10px;width:100%}
+.note{font-size:12.5px;color:var(--mut);margin-top:12px;line-height:1.7}
+footer{text-align:center;font-size:12px;color:var(--mut);margin-top:28px}
+</style>
+</head>
+<body>
+<header>
+  <h1>📇 صور جهات الاتصال</h1>
+  <p>العائلة والمعارف في مكان واحد</p>
+  <div class="hbtns"><button class="hbtn" id="menuBtn" title="القائمة">⚙️</button><button class="hbtn" id="installBtn" title="تثبيت التطبيق" style="display:none">📲</button></div>
+</header>
+
+<div class="wrap">
+  <div class="search">🔍<input id="q" type="search" placeholder="ابحث بالاسم أو الصلة أو الرقم..."></div>
+  <div class="chips" id="chips"></div>
+  <div class="stats" id="stats"></div>
+  <div class="grid" id="grid"></div>
+  <footer>إعداد وتصميم: أبو هديل</footer>
+</div>
+
+<button class="fab" id="addBtn">＋ إضافة جهة اتصال</button>
+
+<!-- نموذج الإضافة/التعديل -->
+<div class="ov" id="formOv">
+  <div class="sheet">
+    <h2><span id="formTitle">إضافة جهة اتصال</span><button class="x" data-close>✕</button></h2>
+    <div class="ph">
+      <div id="formAv"></div>
+      <small id="pickPhoto">📷 اختيار / التقاط صورة</small>
+      <small id="rmPhoto" style="color:var(--red);display:none">إزالة الصورة</small>
+      <input type="file" id="file" accept="image/*" hidden>
+    </div>
+    <label>الاسم *</label>
+    <input id="fName" placeholder="مثال: محمد بن سالم البلوشي">
+    <div class="row">
+      <div><label>التصنيف</label>
+        <select id="fCat"></select></div>
+      <div><label>الصلة / القرابة</label>
+        <input id="fRel" list="rels" placeholder="أخ، عم، جار..."></div>
+    </div>
+    <datalist id="rels"></datalist>
+    <div class="row">
+      <div><label>رقم الهاتف</label><input id="fPhone" type="tel" inputmode="tel" placeholder="9xxxxxxx" dir="ltr"></div>
+      <div><label>رقم آخر</label><input id="fPhone2" type="tel" inputmode="tel" dir="ltr"></div>
+    </div>
+    <div class="row">
+      <div><label>المدينة / الولاية</label><input id="fCity" placeholder="صحار"></div>
+      <div><label>تاريخ الميلاد</label><input id="fBirth" type="date"></div>
+    </div>
+    <label>ملاحظات</label>
+    <textarea id="fNotes" rows="2"></textarea>
+    <label class="chk"><input type="checkbox" id="fFav"> ⭐ إضافة إلى المفضلة</label>
+    <div class="btns">
+      <button class="b p" id="saveBtn">💾 حفظ</button>
+      <button class="b s" data-close>إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- عرض التفاصيل -->
+<div class="ov" id="detOv"><div class="sheet" id="detBody"></div></div>
+
+<!-- تأكيد -->
+<div class="ov" id="cfOv"><div class="sheet" style="text-align:center">
+  <h2 style="justify-content:center" id="cfMsg"></h2>
+  <div class="btns"><button class="b r" id="cfYes">نعم</button><button class="b s" data-close>إلغاء</button></div>
+</div></div>
+
+<!-- القائمة -->
+<div class="ov" id="menuOv"><div class="sheet menu">
+  <h2><span>⚙️ الإعدادات والنسخ الاحتياطي</span><button class="x" data-close>✕</button></h2>
+  <button class="b p" id="expBtn">⬇️ تصدير نسخة احتياطية (JSON)</button>
+  <button class="b s" id="impBtn">⬆️ استيراد نسخة احتياطية</button>
+  <input type="file" id="impFile" accept=".json,application/json" hidden>
+  <button class="b r" id="wipeBtn">🗑️ حذف جميع جهات الاتصال</button>
+  <p class="note">البيانات والصور محفوظة على هذا الجهاز فقط داخل المتصفح. صدّر نسخة احتياطية بين حين وآخر، ويمكنك استيرادها على جهاز آخر لنقل جهات الاتصال بصورها.</p>
+</div></div>
+
+<div class="zoom" id="zoom"><img id="zoomImg" alt=""></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const CATS={fam:{n:'العائلة',c:'var(--fam)',hex:'#d9822b'},acq:{n:'المعارف',c:'var(--acq)',hex:'#2b6fd9'},fr:{n:'الأصدقاء',c:'var(--fr)',hex:'#8a3fd1'},wk:{n:'العمل',c:'var(--wk)',hex:'#5b6b2f'}};
+const RELS=['أب','أم','زوجة','ابن','ابنة','أخ','أخت','جد','جدة','عم','عمة','خال','خالة','ابن عم','ابن خال','نسيب','جار','صديق','زميل عمل'];
+const $=id=>document.getElementById(id);
+let list=[],filter='all',editId=null,photo=null,db=null,memOnly=false;
+
+/* ===== التخزين: IndexedDB مع بديل ===== */
+function openDB(){return new Promise(res=>{try{const r=indexedDB.open('contactsPhotosDB',1);
+  r.onupgradeneeded=e=>e.target.result.createObjectStore('c',{keyPath:'id'});
+  r.onsuccess=e=>{db=e.target.result;res()};r.onerror=()=>{memOnly=true;res()};}catch(e){memOnly=true;res()}})}
+function tx(mode){return db.transaction('c',mode).objectStore('c')}
+function loadAll(){return new Promise(res=>{if(memOnly||!db)return res([]);try{const r=tx('readonly').getAll();r.onsuccess=()=>res(r.result||[]);r.onerror=()=>res([])}catch(e){res([])}})}
+function put(o){return new Promise(res=>{if(memOnly||!db)return res();try{const r=tx('readwrite').put(o);r.onsuccess=r.onerror=()=>res()}catch(e){res()}})}
+function del(id){return new Promise(res=>{if(memOnly||!db)return res();try{const r=tx('readwrite').delete(id);r.onsuccess=r.onerror=()=>res()}catch(e){res()}})}
+function clearAll(){return new Promise(res=>{if(memOnly||!db)return res();try{const r=tx('readwrite').clear();r.onsuccess=r.onerror=()=>res()}catch(e){res()}})}
+
+/* ===== أدوات ===== */
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const initials=n=>{const p=(n||'').trim().split(/\s+/);return (p[0]?.[0]||'؟')+(p.length>1?' '+p[p.length-1][0]:'')};
+function avatar(c,cls=''){const k=CATS[c.cat]||CATS.acq;
+  return c.photo?`<img class="av ${cls}" src="${c.photo}" style="--c:${k.c}" alt="">`
+  :`<div class="av ${cls}" style="--c:${k.c};background:${k.hex}">${esc(initials(c.name))}</div>`}
+function waNum(p){let d=(p||'').replace(/\D/g,'');if(d.startsWith('00'))d=d.slice(2);if(d.length===8)d='968'+d;return d}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2200)}
+function open(id){$(id).classList.add('show')}
+function close(id){$(id).classList.remove('show')}
+document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>{if(e.target===o||e.target.closest('[data-close]'))o.classList.remove('show')}));
+function confirmBox(msg,fn){$('cfMsg').textContent=msg;$('cfYes').onclick=()=>{close('cfOv');fn()};open('cfOv')}
+
+/* ===== ضغط الصورة ===== */
+function resizeImg(file){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{
+  // قص الصورة مربعاً من المنتصف بحجم 800×800
+  const side=Math.min(im.width,im.height),S=Math.min(800,side),cv=document.createElement('canvas');cv.width=cv.height=S;
+  cv.getContext('2d').drawImage(im,(im.width-side)/2,(im.height-side)/2,side,side,0,0,S,S);
+  res(cv.toDataURL('image/jpeg',.85))};im.onerror=rej;im.src=fr.result};fr.onerror=rej;fr.readAsDataURL(file)})}
+
+/* ===== العرض ===== */
+function renderChips(){const cnt={all:list.length,fav:list.filter(c=>c.fav).length};
+  Object.keys(CATS).forEach(k=>cnt[k]=list.filter(c=>c.cat===k).length);
+  const items=[['all','الكل'],['fav','⭐ المفضلة'],...Object.entries(CATS).map(([k,v])=>[k,v.n])];
+  $('chips').innerHTML=items.map(([k,n])=>`<button class="chip ${filter===k?'on':''}" data-f="${k}">${n}<b>${cnt[k]}</b></button>`).join('');
+  $('chips').querySelectorAll('.chip').forEach(b=>b.onclick=()=>{filter=b.dataset.f;render()})}
+function render(){renderChips();const q=$('q').value.trim().toLowerCase();
+  let r=list.filter(c=>filter==='all'||(filter==='fav'?c.fav:c.cat===filter));
+  if(q)r=r.filter(c=>[c.name,c.rel,c.phone,c.phone2,c.city,c.notes].join(' ').toLowerCase().includes(q));
+  r.sort((a,b)=>(b.fav-a.fav)||a.name.localeCompare(b.name,'ar'));
+  $('stats').textContent=r.length?`عدد النتائج: ${r.length}`:'';
+  if(!list.length){$('grid').innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="big">👨‍👩‍👧‍👦</div>لا توجد جهات اتصال بعد<br>اضغط «إضافة جهة اتصال» للبدء</div>`;return}
+  if(!r.length){$('grid').innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="big">🔎</div>لا توجد نتائج مطابقة</div>`;return}
+  $('grid').innerHTML=r.map(c=>{const k=CATS[c.cat]||CATS.acq;return`<div class="card" data-id="${c.id}">${c.fav?'<span class="fav">★</span>':''}${avatar(c,'sq')}
+   <div class="nm">${esc(c.name)}</div><div class="rl">${esc(c.rel||'')}</div><span class="tag" style="--c:${k.c}">${k.n}</span></div>`}).join('');
+  $('grid').querySelectorAll('.card').forEach(el=>el.onclick=()=>showDet(el.dataset.id))}
+
+function showDet(id){const c=list.find(x=>x.id===id);if(!c)return;const k=CATS[c.cat]||CATS.acq;
+  const row=(l,v)=>v?`<div><span>${l}</span><b>${esc(v)}</b></div>`:'';
+  const ph=c.phone||c.phone2;
+  $('detBody').innerHTML=`<h2><span></span><button class="x" data-close>✕</button></h2>
+   <div class="det">${avatar(c,'big')}<h3>${c.fav?'⭐ ':''}${esc(c.name)}</h3>
+   <div class="rl">${esc(c.rel||'')} <span class="tag" style="--c:${k.c}">${k.n}</span></div>
+   ${ph?`<div class="bigcall"><a class="call" href="tel:${esc(ph)}"><i>📞</i>اتصال</a><a class="wa" href="https://wa.me/${waNum(ph)}" target="_blank" rel="noopener"><i>💬</i>واتساب</a></div>`:''}
+   <div class="info">${row('الهاتف',c.phone)}${row('رقم آخر',c.phone2)}${row('المدينة',c.city)}${row('تاريخ الميلاد',c.birth)}${row('ملاحظات',c.notes)}</div>
+   <div class="btns small" style="margin-top:28px"><button class="b s" id="dEdit">✏️ تعديل</button><button class="b s" id="dFav">${c.fav?'إلغاء المفضلة':'⭐ مفضلة'}</button><button class="b r" id="dDel">🗑️ حذف</button></div></div>`;
+  const big=$('detBody').querySelector('img.av');if(big)big.onclick=()=>{$('zoomImg').src=c.photo;open('zoom')};
+  $('dEdit').onclick=()=>{close('detOv');openForm(c)};
+  $('dFav').onclick=async()=>{c.fav=!c.fav;await put(c);render();showDet(id)};
+  $('dDel').onclick=()=>confirmBox(`حذف «${c.name}»؟`,async()=>{await del(id);list=list.filter(x=>x.id!==id);close('detOv');render();toast('تم الحذف')});
+  open('detOv')}
+$('zoom').onclick=()=>close('zoom');
+
+/* ===== النموذج ===== */
+$('fCat').innerHTML=Object.entries(CATS).map(([k,v])=>`<option value="${k}">${v.n}</option>`).join('');
+$('rels').innerHTML=RELS.map(r=>`<option value="${r}">`).join('');
+function drawFormAv(){const tmp={name:$('fName').value||'؟',cat:$('fCat').value,photo};$('formAv').innerHTML=avatar(tmp);
+  $('formAv').firstChild.onclick=()=>$('file').click();$('rmPhoto').style.display=photo?'':'none'}
+function openForm(c){editId=c?.id||null;photo=c?.photo||null;$('formTitle').textContent=c?'تعديل جهة اتصال':'إضافة جهة اتصال';
+  $('fName').value=c?.name||'';$('fCat').value=c?.cat||(['fam','acq','fr','wk'].includes(filter)?filter:'fam');$('fRel').value=c?.rel||'';
+  $('fPhone').value=c?.phone||'';$('fPhone2').value=c?.phone2||'';$('fCity').value=c?.city||'';$('fBirth').value=c?.birth||'';
+  $('fNotes').value=c?.notes||'';$('fFav').checked=!!c?.fav;drawFormAv();open('formOv');setTimeout(()=>$('fName').focus(),250)}
+$('addBtn').onclick=()=>openForm();
+$('pickPhoto').onclick=()=>$('file').click();
+$('rmPhoto').onclick=()=>{photo=null;drawFormAv()};
+$('fName').oninput=$('fCat').onchange=drawFormAv;
+$('file').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{photo=await resizeImg(f);drawFormAv()}catch(_){toast('تعذّر قراءة الصورة')}e.target.value=''};
+$('saveBtn').onclick=async()=>{const name=$('fName').value.trim();if(!name){toast('اكتب الاسم أولاً');$('fName').focus();return}
+  const o={id:editId||('c'+Date.now()+Math.random().toString(36).slice(2,6)),name,cat:$('fCat').value,rel:$('fRel').value.trim(),
+   phone:$('fPhone').value.trim(),phone2:$('fPhone2').value.trim(),city:$('fCity').value.trim(),birth:$('fBirth').value,
+   notes:$('fNotes').value.trim(),fav:$('fFav').checked,photo,updated:new Date().toISOString()};
+  await put(o);const i=list.findIndex(x=>x.id===o.id);if(i>-1)list[i]=o;else list.push(o);
+  close('formOv');render();toast(editId?'تم حفظ التعديل':'تمت الإضافة ✅')};
+
+/* ===== النسخ الاحتياطي ===== */
+$('menuBtn').onclick=()=>open('menuOv');
+$('expBtn').onclick=()=>{if(!list.length){toast('لا توجد بيانات للتصدير');return}
+  try{const blob=new Blob([JSON.stringify({app:'contacts-photos',v:1,date:new Date().toISOString(),items:list})],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='نسخة_جهات_الاتصال_'+new Date().toISOString().slice(0,10)+'.json';
+  document.body.appendChild(a);a.click();a.remove();toast('تم تجهيز ملف النسخة')}catch(e){toast('التصدير غير متاح في هذه البيئة')}};
+$('impBtn').onclick=()=>$('impFile').click();
+$('impFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());const items=Array.isArray(d)?d:d.items;
+  if(!Array.isArray(items))throw 0;let n=0;for(const it of items){if(!it||!it.name)continue;it.id=it.id||('c'+Date.now()+n);await put(it);
+  const i=list.findIndex(x=>x.id===it.id);if(i>-1)list[i]=it;else list.push(it);n++}
+  close('menuOv');render();toast(`تم استيراد ${n} جهة اتصال`)}catch(_){toast('ملف غير صالح')}e.target.value=''};
+$('wipeBtn').onclick=()=>{close('menuOv');confirmBox('حذف جميع جهات الاتصال نهائياً؟',async()=>{await clearAll();list=[];render();toast('تم حذف الكل')})};
+
+$('q').oninput=render;
+/* ===== PWA: التثبيت والعمل بدون إنترنت ===== */
+if('serviceWorker' in navigator&&location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('installBtn').style.display=''});
+$('installBtn').onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$('installBtn').style.display='none'};
+window.addEventListener('appinstalled',()=>{$('installBtn').style.display='none';toast('تم تثبيت التطبيق ✅')});
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(_){}
+
+(async()=>{await openDB();list=await loadAll();render();if(memOnly)toast('تنبيه: الحفظ الدائم غير متاح في هذا المتصفح')})();
+</script>
+</body>
+</html>
